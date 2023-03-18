@@ -25,7 +25,7 @@ import java.util.HashMap;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText register_name,register_email,register_password;
+    private EditText register_name,register_email,register_password,register_Phone;
     private Button register_button;
     private TextView login_text;
     private FirebaseAuth auth;
@@ -42,6 +42,7 @@ public class RegisterActivity extends AppCompatActivity {
         register_name = findViewById(R.id.register_name);
         register_email = findViewById(R.id.register_email);
         register_password = findViewById(R.id.register_password);
+        register_Phone = findViewById(R.id.register_Phone);
         login_text = findViewById(R.id.login_text);
 
         auth = FirebaseAuth.getInstance();
@@ -64,20 +65,21 @@ public class RegisterActivity extends AppCompatActivity {
                 String txt_email = register_email.getText().toString();
                 String txt_name = register_name.getText().toString();
                 String txt_password = register_password.getText().toString();
+                String txt_phonenumber = register_Phone.getText().toString();
 
-                if (TextUtils.isEmpty(txt_email)||TextUtils.isEmpty(txt_name))
+                if (TextUtils.isEmpty(txt_email)||TextUtils.isEmpty(txt_name)||TextUtils.isEmpty(txt_phonenumber))
                 {
                     Toast.makeText(RegisterActivity.this, "Empty credentials.", Toast.LENGTH_SHORT).show();
                 } else if (txt_password.length() < 6) {
                     Toast.makeText(RegisterActivity.this, "Password too short.", Toast.LENGTH_SHORT).show();
                 }else {
-                    registerUser(txt_email,txt_name,txt_password);
+                    registerUser(txt_email,txt_name,txt_password,txt_phonenumber);
                 }
             }
         });
     }
 
-    private void registerUser(String register_email,String register_name, String register_password) {
+    private void registerUser(String register_email,String register_name, String register_password,String register_Phone) {
         auth.createUserWithEmailAndPassword(register_email, register_password).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
 
 
@@ -93,6 +95,7 @@ public class RegisterActivity extends AppCompatActivity {
                     hashMap.put("name", register_name);
                     hashMap.put("Email", register_email);
                     hashMap.put("Password",register_password);
+                    hashMap.put("phonenumber", register_Phone);
 
                     //Save to our firebase database
                     databaseReference.child("Users").child(register_name).setValue(hashMap);
