@@ -32,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         logout_button = findViewById(R.id.logout_button);
-        listView = findViewById(R.id.listView);
 
         logout_button.setOnClickListener(new View.OnClickListener() {
             @Override

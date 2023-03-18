@@ -12,9 +12,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
@@ -24,6 +27,9 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText register_name,register_email,register_password;
     private Button register_button;
     private FirebaseAuth auth;
+
+    private FirebaseDatabase firebaseDatabase;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,10 @@ public class RegisterActivity extends AppCompatActivity {
         register_password = findViewById(R.id.register_password);
 
         auth = FirebaseAuth.getInstance();
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+
+        databaseReference = firebaseDatabase.getReference();
 
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,17 +68,24 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void registerUser(String register_email,String register_name, String register_password) {
         auth.createUserWithEmailAndPassword(register_email, register_password).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+
+
+
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                HashMap<String , Object> map = new HashMap<>();
-                map.put("name", register_name);
-                map.put("Email", register_email);
-                map.put("Password",register_password);
-                map.put("id" , auth.getCurrentUser().getUid());
-
                 if (task.isSuccessful()){
                     Toast.makeText(RegisterActivity.this, "User Register Successful", Toast.LENGTH_SHORT).show();
+
+                    //Create a User Map so we create a user in the user collection
+                    HashMap<String , Object> hashMap = new HashMap<>();
+                    hashMap.put("name", register_name);
+                    hashMap.put("Email", register_email);
+                    hashMap.put("Password",register_password);
+
+                    //Save to our firebase database
+                    databaseReference.child("Users").child(register_name).setValue(hashMap);
+
                     startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                     finish();
                 }else {
