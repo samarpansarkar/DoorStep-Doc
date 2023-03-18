@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
+    android:padding="16dp"
     tools:context=".StartActivity">
 
     <LinearLayout
@@ -13,19 +14,46 @@
         android:layout_centerInParent="true"
         android:orientation="vertical"
         android:padding="10dp"
+        android:background="@drawable/color_background"
         android:id="@+id/linear_layout">
 
-        <Button
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="Log In"
-            android:textAllCaps="false"
-            android:id="@+id/login"/>
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="Welcome"
+            android:textAlignment="center"
+            android:textSize="36sp"
+            android:textStyle="bold" />
 
         <Button
             android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="50dp"
+            android:text="LogIn"
+            android:textSize="20dp"
+            android:layout_marginBottom="18sp"
+            android:textAllCaps="false"
+            android:background="@drawable/white_backgroud"
+            android:id="@+id/login"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="or"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_marginTop="18sp"
+            android:layout_marginBottom="18sp"
             android:layout_height="50dp"
             android:text="SignUp"
+            android:textSize="20dp"
+            android:background="@drawable/white_backgroud"
             android:textAllCaps="false"
             android:id="@+id/signup"/>
 

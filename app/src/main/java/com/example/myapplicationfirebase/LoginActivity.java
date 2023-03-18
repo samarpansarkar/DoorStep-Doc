@@ -1,5 +1,6 @@
 package com.example.myapplicationfirebase;
 
+import androidx.activity.OnBackPressedDispatcherOwner;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -18,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText login_email , login_password;
     private Button login_button;
+    private TextView signup_text;
 
     private FirebaseAuth auth;
 
@@ -29,9 +32,16 @@ public class LoginActivity extends AppCompatActivity {
         login_button = findViewById(R.id.login_button);
         login_email = findViewById(R.id.login_email);
         login_password = findViewById(R.id.login_password);
+        signup_text = findViewById(R.id.signup_text);
 
         auth = FirebaseAuth.getInstance();
 
+        signup_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
+            }
+        });
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

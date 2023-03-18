@@ -3,18 +3,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="10dp"
-    android:layout_gravity="center"
+    android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".LoginActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/white_backgroud"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LogIn"
+            android:textSize="36sp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@color/lavender"/>
 
     <EditText
         android:id="@+id/login_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
+        android:padding="10dp"
+        android:drawablePadding="8dp"
+        android:background="@drawable/white_backgroud"
+        android:drawableLeft="@drawable/baseline_email_24"
         android:hint="Email"
         android:minHeight="48dp" />
 
@@ -23,17 +43,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:drawablePadding="8dp"
+        android:background="@drawable/white_backgroud"
+        android:drawableLeft="@drawable/baseline_lock_24"
         android:hint="Password"
         android:minHeight="48dp" />
 
     <Button
         android:id="@+id/login_button"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Login"
+        android:layout_height="60dp"
+        android:hint="LogIn"
+        android:textStyle="bold"
+        android:textSize="18sp"
         android:textColor="@color/white"
+        android:background="@drawable/color_background"
         android:layout_marginTop="10dp"/>
 
+        <TextView
+            android:id="@+id/signup_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Don't have account? SignUp"
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:textColor="@color/lavender"/>
+
+    </LinearLayout>
 
 </LinearLayout>

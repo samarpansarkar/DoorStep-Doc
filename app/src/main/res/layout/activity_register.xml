@@ -87,8 +87,7 @@
         android:textStyle="bold"
         android:textSize="18sp"
         android:textColor="@color/white"
-        android:backgroundTint="@color/lavender"
-        app:cornerRadius = "20dp"
+        android:background="@drawable/color_background"
         android:layout_marginTop="10dp"/>
 
         <TextView
