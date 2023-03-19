@@ -15,7 +15,7 @@
             android:name=".DoctorSignupActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".PatientMainActivity"
             android:exported="false" />
         <activity
             android:name=".RegisterActivity"

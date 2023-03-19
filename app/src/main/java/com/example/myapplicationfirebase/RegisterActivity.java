@@ -13,8 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -95,9 +93,9 @@ public class RegisterActivity extends AppCompatActivity {
                     hashMap.put("phonenumber", register_Phone);
 
                     //Save to our firebase database
-                    databaseReference.child("Users").child(register_name).setValue(hashMap);
+                    databaseReference.child("Users").child("Patients").child(register_name).setValue(hashMap);
 
-                    startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                    startActivity(new Intent(RegisterActivity.this, PatientMainActivity.class));
                     finish();
                 }else {
                     Toast.makeText(RegisterActivity.this, "Registration Failed!!", Toast.LENGTH_SHORT).show();

@@ -6,7 +6,18 @@
     android:orientation="vertical"
     android:padding="10dp"
     android:gravity="center"
-    tools:context=".MainActivity">
+    tools:context=".PatientMainActivity">
+
+    <Button
+        android:id="@+id/doc_booking_button"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/white_backgroud"
+        android:hint="BooK a Doctor"
+        android:textSize="20sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:padding="3sp"/>
 
     <Button
         android:id="@+id/logout_button"

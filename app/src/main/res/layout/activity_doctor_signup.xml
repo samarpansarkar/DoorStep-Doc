@@ -40,6 +40,19 @@
             android:minHeight="48dp" />
 
         <EditText
+            android:id="@+id/doc_register_specialization"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:drawablePadding="8dp"
+            android:background="@drawable/white_backgroud"
+            android:drawableLeft="@drawable/baseline_person_24"
+            android:hint="Specialization"
+            android:minHeight="48dp" />
+
+        <EditText
             android:id="@+id/doc_register_Phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
