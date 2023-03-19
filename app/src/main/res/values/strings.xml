@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">My Application Firebase</string>
+    <string name="already_have_an_account_login">Already have an account? LogIn</string>
 </resources>
