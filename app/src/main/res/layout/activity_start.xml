@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/app_background"
     android:layout_gravity="center"
     android:padding="16dp"
     tools:context=".StartActivity">
@@ -13,8 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical"
+        android:layout_marginTop="100dp"
         android:padding="10dp"
-        android:background="@drawable/color_background"
         android:id="@+id/linear_layout">
 
         <TextView
