@@ -31,7 +31,7 @@
             android:layout_marginTop="20dp"
             android:layout_height="50dp"
             android:text="LogIn"
-            android:textSize="20dp"
+            android:textSize="22dp"
             android:layout_marginBottom="18sp"
             android:textAllCaps="false"
             android:background="@drawable/white_backgroud"
@@ -51,11 +51,30 @@
             android:layout_marginTop="18sp"
             android:layout_marginBottom="18sp"
             android:layout_height="50dp"
-            android:text="SignUp"
-            android:textSize="20dp"
+            android:text="Patient SignUp"
+            android:textSize="22dp"
             android:background="@drawable/white_backgroud"
             android:textAllCaps="false"
             android:id="@+id/signup"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="or"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_marginTop="18sp"
+            android:layout_marginBottom="18sp"
+            android:layout_height="50dp"
+            android:text="Doctor SignUp"
+            android:textSize="22dp"
+            android:background="@drawable/white_backgroud"
+            android:textAllCaps="false"
+            android:id="@+id/doc_signup"/>
 
     </LinearLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>
