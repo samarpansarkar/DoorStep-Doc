@@ -81,9 +81,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void registerUser(String register_email,String register_name, String register_password,String register_Phone) {
         auth.createUserWithEmailAndPassword(register_email, register_password).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
-
-
-
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
