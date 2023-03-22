@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText login_email , login_password;
     private Button login_button;
-    private TextView signup_text;
+    private TextView signup_text, login_contactus;
 
     private FirebaseAuth auth;
 
@@ -32,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
         login_email = findViewById(R.id.login_email);
         login_password = findViewById(R.id.login_password);
         signup_text = findViewById(R.id.signup_text);
+        login_contactus = findViewById(R.id.login_contactus);
 
         auth = FirebaseAuth.getInstance();
 
@@ -52,6 +53,12 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     loginUser(txt_email , txt_password);
                 }
+            }
+        });
+        login_contactus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, ContactUsActivity.class));
             }
         });
 
