@@ -22,6 +22,7 @@
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Doctor Name:"
@@ -32,7 +33,7 @@
             android:drawablePadding="3sp"/>
 
         <TextView
-            android:id="@+id/cardname"
+            android:id="@+id/userstatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8sp"
