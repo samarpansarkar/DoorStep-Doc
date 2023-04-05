@@ -18,8 +18,9 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class DoctorSearchActivity extends AppCompatActivity {
-    FirebaseAuth auth;
-    RecyclerView mainuserrecycleview;
+
+    //FirebaseAuth auth;
+    RecyclerView DrrecyclerView;
     UserAdpter adapter;
     FirebaseDatabase database;
     ArrayList<Users> usersArrayList;
@@ -30,7 +31,6 @@ public class DoctorSearchActivity extends AppCompatActivity {
         setContentView(R.layout.activity_doctor_search);
 
         database = FirebaseDatabase.getInstance();
-        auth = FirebaseAuth.getInstance();
 
         DatabaseReference reference = database.getReference().child("User");
 
@@ -55,16 +55,11 @@ public class DoctorSearchActivity extends AppCompatActivity {
         });
 
 
-        mainuserrecycleview = findViewById(R.id.DrrecyclerView);
-        mainuserrecycleview.setLayoutManager(new LinearLayoutManager(this));
+        DrrecyclerView = findViewById(R.id.DrrecyclerView);
+        DrrecyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new UserAdpter(DoctorSearchActivity.this, usersArrayList);
-        mainuserrecycleview.setAdapter(adapter);
-
-        if (auth.getCurrentUser() == null) {
-            Intent intent = new Intent(DoctorSearchActivity.this, LoginActivity.class);
-            startActivity(intent);
+        DrrecyclerView.setAdapter(adapter);
 
 
-        }
     }
 }

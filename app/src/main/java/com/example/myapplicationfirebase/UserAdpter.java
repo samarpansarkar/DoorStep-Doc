@@ -1,6 +1,5 @@
 package com.example.myapplicationfirebase;
 
-import static com.example.myapplicationfirebase.R.id.userstatus;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.BreakIterator;
 import java.util.ArrayList;
 
 public class UserAdpter extends RecyclerView.Adapter<UserAdpter.viewholder> {
@@ -32,7 +32,8 @@ public class UserAdpter extends RecyclerView.Adapter<UserAdpter.viewholder> {
 
         Users users = usersArrayList.get(position);
         holder.username.setText(users.userName);
-        holder.userstatus.setText(users.status);
+        holder.phone.setText(users.phone);
+        holder.specialization.setText(users.specialization);
     }
 
     @Override
@@ -40,14 +41,16 @@ public class UserAdpter extends RecyclerView.Adapter<UserAdpter.viewholder> {
         return usersArrayList.size();
     }
 
-    public class viewholder extends RecyclerView.ViewHolder {
+    public static class viewholder extends RecyclerView.ViewHolder {
 
+        public TextView phone;
         TextView username;
-        TextView userstatus;
+        TextView specialization;
         public viewholder(@NonNull View itemView) {
             super(itemView);
-            username = itemView.findViewById(R.id.username);
-            userstatus= itemView.findViewById(R.id.userstatus);
+            username = itemView.findViewById(R.id.card_username);
+            phone= itemView.findViewById(R.id.card_phone);
+            specialization= itemView.findViewById(R.id.card_specialization);
 
         }
     }

@@ -22,7 +22,6 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Doctor Name:"
@@ -33,7 +32,7 @@
             android:drawablePadding="3sp"/>
 
         <TextView
-            android:id="@+id/userstatus"
+            android:id="@+id/card_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8sp"
@@ -53,7 +52,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Phonenumber:"
+                android:text="Phone number:"
                 android:drawableLeft="@drawable/baseline_local_phone_24"
                 android:drawablePadding="3sp"
                 android:textColor="@color/lavender"
@@ -61,7 +60,7 @@
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/cardphone"
+                android:id="@+id/card_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8sp"
@@ -71,32 +70,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Email:"
-                android:textColor="@color/lavender"
-                android:drawableLeft="@drawable/baseline_email_24"
-                android:drawablePadding="3sp"
-                android:textSize="20sp"
-                android:textStyle="bold"/>
-
-            <TextView
-                android:id="@+id/cardmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8sp"
-                android:text="Email"
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -115,7 +89,7 @@
                 android:textStyle="bold"/>
 
             <TextView
-                android:id="@+id/cardspecialization"
+                android:id="@+id/card_specialization"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8sp"
