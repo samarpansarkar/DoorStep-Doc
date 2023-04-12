@@ -77,8 +77,8 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void registerUser(String register_email,String register_name, String register_password,String register_Phone) {
-        auth.createUserWithEmailAndPassword(register_email, register_password).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+    private void registerUser(String email,String name, String password,String PhoneNumber) {
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
@@ -87,13 +87,13 @@ public class RegisterActivity extends AppCompatActivity {
 
                     //Create a User Map so we create a user in the user collection
                     HashMap<String , Object> hashMap = new HashMap<>();
-                    hashMap.put("name", register_name);
-                    hashMap.put("Email", register_email);
-                    hashMap.put("Password",register_password);
-                    hashMap.put("phonenumber", register_Phone);
+                    hashMap.put("name", name);
+                    hashMap.put("Email", email);
+                    hashMap.put("Password", password);
+                    hashMap.put("phonenumber", PhoneNumber);
 
                     //Save to our firebase database
-                    databaseReference.child("Users").child("Patients").child(register_name).setValue(hashMap);
+                    databaseReference.child("Users").child("Patient").child(name).setValue(hashMap);
 
                     startActivity(new Intent(RegisterActivity.this, PatientMainActivity.class));
                     finish();

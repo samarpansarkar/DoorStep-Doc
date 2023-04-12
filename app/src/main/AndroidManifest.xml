@@ -12,6 +12,9 @@
         android:theme="@style/Theme.MyApplicationFirebase"
         tools:targetApi="31">
         <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".ContactUsActivity"
             android:exported="false" />
         <activity

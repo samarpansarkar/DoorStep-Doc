@@ -1,5 +1,7 @@
 package com.example.myapplicationfirebase;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,10 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorViewHolder> {
-
+    private Context context;
     private List<Doctor> doctors;
 
-    public DoctorAdapter(List<Doctor> doctors) {
+    public DoctorAdapter(Context context, List<Doctor> doctors) {
+
+        this.context = context;
         this.doctors = doctors;
     }
 
@@ -31,10 +35,22 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
         holder.nameTextView.setText(doctor.getName());
         holder.phoneNumberTextView.setText(doctor.getPhoneNumber());
         holder.specializationTextView.setText(doctor.getSpecialization());
+
+
+        //chat
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, ChatActivity.class);
+                intent.putExtra("doctorName", doctor.getName());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
+
         return doctors.size();
     }
 

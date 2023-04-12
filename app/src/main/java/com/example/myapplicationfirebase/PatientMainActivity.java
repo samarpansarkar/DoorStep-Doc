@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -13,8 +14,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class PatientMainActivity extends AppCompatActivity {
 
-    private Button logout_button,doc_booking_button;
+    private Button doc_booking_button;
     private ListView listView;
+    private ImageView logOut;
 
 
     @Override
@@ -22,10 +24,11 @@ public class PatientMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_patient);
 
-        logout_button = findViewById(R.id.logout_button);
-        doc_booking_button = findViewById(R.id.doc_booking_button);
 
-        logout_button.setOnClickListener(new View.OnClickListener() {
+        doc_booking_button = findViewById(R.id.doc_booking_button);
+        logOut = findViewById(R.id.logOut);
+
+        logOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();

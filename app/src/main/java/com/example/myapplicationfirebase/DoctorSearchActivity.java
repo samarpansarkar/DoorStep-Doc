@@ -36,7 +36,7 @@ public class DoctorSearchActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         doctorList = new ArrayList<>();
-        adapter = new DoctorAdapter(doctorList);
+        adapter = new DoctorAdapter(DoctorSearchActivity.this, doctorList);
         recyclerView.setAdapter(adapter);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Users").child("Doctor");
