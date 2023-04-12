@@ -82,30 +82,33 @@ public class DoctorSignupActivity extends AppCompatActivity {
 
     }
 
-    private void registerUser(String email, String name, String password, String phone,String specialization) {
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+    private void registerUser(String email, String name, String password, String phone, String specialization) {
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
+                if (task.isSuccessful()) {
+                    String userId = auth.getCurrentUser().getUid(); // Get the user ID of the registered user
                     Toast.makeText(DoctorSignupActivity.this, "User Register Successful", Toast.LENGTH_SHORT).show();
 
-                    //Create a User Map so we create a user in the user collection
-                    HashMap<String , Object> hashMap = new HashMap<>();
+                    // Create a User Map so we create a user in the user collection
+                    HashMap<String, Object> hashMap = new HashMap<>();
+                    hashMap.put("userId", userId); // Add user ID to the user data
                     hashMap.put("name", name);
                     hashMap.put("Email", email);
-                    hashMap.put("Password",password);
+                    hashMap.put("Password", password);
                     hashMap.put("phonenumber", phone);
-                    hashMap.put("specialization",specialization);
+                    hashMap.put("specialization", specialization);
 
-                    //Save to our firebase database
-                    databaseReference.child("Users").child("Doctor").child(name).setValue(hashMap);
+                    // Save to our firebase database
+                    databaseReference.child("Users").child("Doctor").child(userId).setValue(hashMap); // Store the user data with user ID as key
 
                     startActivity(new Intent(DoctorSignupActivity.this, PatientMainActivity.class));
                     finish();
-                }else {
+                } else {
                     Toast.makeText(DoctorSignupActivity.this, "Registration Failed!!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
+
 }

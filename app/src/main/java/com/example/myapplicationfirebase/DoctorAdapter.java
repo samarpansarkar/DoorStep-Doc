@@ -36,6 +36,15 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
         holder.phoneNumberTextView.setText(doctor.getPhoneNumber());
         holder.specializationTextView.setText(doctor.getSpecialization());
 
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,ChatActivity.class);
+                intent.putExtra("doctorName", doctor.getName());
+                context.startActivity(intent);
+            }
+        });
+
 
         //chat
         holder.itemView.setOnClickListener(new View.OnClickListener() {

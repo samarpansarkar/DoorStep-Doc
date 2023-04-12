@@ -32,7 +32,7 @@ public class StartActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(StartActivity.this,RegisterActivity.class));
+                startActivity(new Intent(StartActivity.this, PatientSignupActivity.class));
                 //finish();
             }
         });

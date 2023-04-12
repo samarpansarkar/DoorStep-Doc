@@ -8,6 +8,8 @@
     android:gravity="center"
     android:background="@drawable/app_background"
     tools:context=".PatientMainActivity">
+
+
     <ImageView
         android:id="@+id/logOut"
         android:layout_width="20dp"

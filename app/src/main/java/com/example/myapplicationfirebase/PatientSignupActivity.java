@@ -16,18 +16,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
-public class RegisterActivity extends AppCompatActivity {
+public class PatientSignupActivity extends AppCompatActivity {
 
     private EditText register_name,register_email,register_password,register_Phone;
     private Button register_button;
     private TextView login_text;
     private FirebaseAuth auth;
 
+    private String userId;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference databaseReference;
 
@@ -52,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
         login_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                startActivity(new Intent(PatientSignupActivity.this,LoginActivity.class));
                 finish();
             }
         });
@@ -67,9 +69,9 @@ public class RegisterActivity extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(txt_email)||TextUtils.isEmpty(txt_name)||TextUtils.isEmpty(txt_phonenumber))
                 {
-                    Toast.makeText(RegisterActivity.this, "Empty credentials.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PatientSignupActivity.this, "Empty credentials.", Toast.LENGTH_SHORT).show();
                 } else if (txt_password.length() < 6) {
-                    Toast.makeText(RegisterActivity.this, "Password too short.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PatientSignupActivity.this, "Password too short.", Toast.LENGTH_SHORT).show();
                 }else {
                     registerUser(txt_email,txt_name,txt_password,txt_phonenumber);
                 }
@@ -77,28 +79,35 @@ public class RegisterActivity extends AppCompatActivity {
         });
     }
 
-    private void registerUser(String email,String name, String password,String PhoneNumber) {
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+    private void registerUser(String email, String name, String password, String PhoneNumber) {
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(PatientSignupActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
-                if (task.isSuccessful()){
-                    Toast.makeText(RegisterActivity.this, "User Register Successful", Toast.LENGTH_SHORT).show();
+                if (task.isSuccessful()) {
+                    // Get the user ID of the registered user
+                    FirebaseUser user = auth.getCurrentUser();
+                    if (user != null) {
+                        userId = user.getUid();
+                    }
 
-                    //Create a User Map so we create a user in the user collection
-                    HashMap<String , Object> hashMap = new HashMap<>();
+                    Toast.makeText(PatientSignupActivity.this, "User Register Successful", Toast.LENGTH_SHORT).show();
+
+                    // Create a User Map so we create a user in the user collection
+                    HashMap<String, Object> hashMap = new HashMap<>();
+                    hashMap.put("userId", userId); // Add user ID to the map
                     hashMap.put("name", name);
                     hashMap.put("Email", email);
                     hashMap.put("Password", password);
                     hashMap.put("phonenumber", PhoneNumber);
 
-                    //Save to our firebase database
-                    databaseReference.child("Users").child("Patient").child(name).setValue(hashMap);
-
-                    startActivity(new Intent(RegisterActivity.this, PatientMainActivity.class));
+                    // Save to our firebase database
+                    databaseReference.child("Users").child("Patient").child(userId).setValue(hashMap); // Use user ID as child node
+                    Intent intent = new Intent(PatientSignupActivity.this, PatientMainActivity.class);
+                    startActivity(intent);
                     finish();
-                }else {
-                    Toast.makeText(RegisterActivity.this, "Registration Failed!!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(PatientSignupActivity.this, "Registration Failed!!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
