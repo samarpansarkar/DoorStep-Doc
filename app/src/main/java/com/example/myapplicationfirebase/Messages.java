@@ -2,15 +2,15 @@ package com.example.myapplicationfirebase;
 
 public class Messages {
     String message;
-    String senderName;
+    String senderId;
     long timeStamp;
 
     public Messages() {
     }
 
-    public Messages(String message, String senderName, long timeStamp) {
+    public Messages(String message, String senderId, long timeStamp) {
         this.message = message;
-        this.senderName = senderName;
+        this.senderId = senderId;
         this.timeStamp = timeStamp;
     }
 
@@ -23,11 +23,11 @@ public class Messages {
     }
 
     public String getSenderName() {
-        return senderName;
+        return senderId;
     }
 
     public void setSenderName(String senderName) {
-        this.senderName = senderName;
+        this.senderId = senderName;
     }
 
     public long getTimeStamp() {

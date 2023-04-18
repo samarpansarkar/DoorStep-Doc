@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,43 +30,49 @@ import java.util.Date;
 
 public class ChatActivity extends AppCompatActivity {
 
-    String ReciverName;
+    String ReciverName, ReciverUID, SenderUid;
     String senderRoom,reciverRoom;
     private TextView chatUserName;
     private CardView sendButton;
     private RecyclerView messageAdapter;
+    private LinearLayoutManager linearLayoutManager;
 
     private ArrayList<Messages> messagesArrayList;
 
     messagesAdaptor msgAdapter;
     private EditText editTextMsg;
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child("Patient").child("name").child("name");
-    private DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("Chats").child("senderRoom").child("messages");
-
+    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Users").child("Patient").child(firebaseAuth.getUid());
+    private DatabaseReference chatRef ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
         ReciverName = getIntent().getStringExtra("doctorName");
+        ReciverUID = getIntent().getStringExtra("userID");
+
+        SenderUid = firebaseAuth.getUid();
 
         chatUserName = findViewById(R.id.chat_user_name);
 
         chatUserName.setText(""+ReciverName);
-
 
         sendButton = findViewById(R.id.sendMsgButton);
         editTextMsg = findViewById(R.id.editTextMsg);
         messagesArrayList = new ArrayList<>();
 
         messageAdapter = findViewById(R.id.messageAdapter);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setStackFromEnd(true);
         messageAdapter.setLayoutManager(linearLayoutManager);
         msgAdapter = new messagesAdaptor(ChatActivity.this,messagesArrayList);
         messageAdapter.setAdapter(msgAdapter);
 
+        senderRoom = SenderUid +"_"+ ReciverUID;
+        reciverRoom = ReciverUID +"_"+ SenderUid;
+        chatRef = FirebaseDatabase.getInstance().getReference("Chats").child(senderRoom).child("messages");
 
 
 
@@ -78,6 +85,10 @@ public class ChatActivity extends AppCompatActivity {
 
                }
                 msgAdapter.notifyDataSetChanged();
+                // Scroll to the bottom of the RecyclerView
+                if (messagesArrayList.size() > 0) {
+                    messageAdapter.scrollToPosition(messagesArrayList.size() - 1);
+                }
             }
 
             @Override
@@ -104,11 +115,8 @@ public class ChatActivity extends AppCompatActivity {
                         // Get the value from the dataSnapshot
                         String senderName = dataSnapshot.getValue(String.class);
 
-                        senderRoom = senderName + ReciverName;
-                        reciverRoom = ReciverName + senderName;
-
                         // Use the senderName variable as needed
-                        Messages messages = new Messages(message, senderName, date.getTime());
+                        Messages messages = new Messages(message, SenderUid, date.getTime());
 
                         firebaseDatabase.getReference().child("Chats")
                                 .child(senderRoom)

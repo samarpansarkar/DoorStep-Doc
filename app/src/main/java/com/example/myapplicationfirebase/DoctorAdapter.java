@@ -46,12 +46,13 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
         });
 
 
-        //chat
+        //chat ----------------------
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ChatActivity.class);
                 intent.putExtra("doctorName", doctor.getName());
+                intent.putExtra("userID",doctor.getUserId());
                 context.startActivity(intent);
             }
         });
