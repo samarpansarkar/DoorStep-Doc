@@ -12,14 +12,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorViewHolder> {
+public class UserAdapter extends RecyclerView.Adapter<UserAdapter.DoctorViewHolder> {
     private Context context;
-    private List<Doctor> doctors;
+    private List<User> users;
 
-    public DoctorAdapter(Context context, List<Doctor> doctors) {
+    public UserAdapter(Context context, List<User> users) {
 
         this.context = context;
-        this.doctors = doctors;
+        this.users = users;
     }
 
     @NonNull
@@ -31,28 +31,18 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
 
     @Override
     public void onBindViewHolder(@NonNull DoctorViewHolder holder, int position) {
-        Doctor doctor = doctors.get(position);
-        holder.nameTextView.setText(doctor.getName());
-        holder.phoneNumberTextView.setText(doctor.getPhoneNumber());
-        holder.specializationTextView.setText(doctor.getSpecialization());
-
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context,ChatActivity.class);
-                intent.putExtra("doctorName", doctor.getName());
-                context.startActivity(intent);
-            }
-        });
-
+        User user = users.get(position);
+        holder.nameTextView.setText(user.getName());
+        holder.phoneNumberTextView.setText(user.getPhoneNumber());
+        holder.specializationTextView.setText(user.getSpecialization());
 
         //chat ----------------------
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, ChatActivity.class);
-                intent.putExtra("doctorName", doctor.getName());
-                intent.putExtra("userID",doctor.getUserId());
+                intent.putExtra("Name", user.getName());
+                intent.putExtra("userID", user.getUserId());
                 context.startActivity(intent);
             }
         });
@@ -61,7 +51,7 @@ public class DoctorAdapter extends RecyclerView.Adapter<DoctorAdapter.DoctorView
     @Override
     public int getItemCount() {
 
-        return doctors.size();
+        return users.size();
     }
 
     public static class DoctorViewHolder extends RecyclerView.ViewHolder {

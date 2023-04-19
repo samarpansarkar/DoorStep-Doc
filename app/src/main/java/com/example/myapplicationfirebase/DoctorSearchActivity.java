@@ -1,16 +1,13 @@
 package com.example.myapplicationfirebase;
 
+import android.os.Bundle;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.Toast;
-
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,12 +15,13 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class DoctorSearchActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private DoctorAdapter adapter;
-    private List<Doctor> doctorList;
+    private UserAdapter adapter;
+    private List<User> userList;
     private DatabaseReference databaseReference;
 
     @Override
@@ -35,18 +33,34 @@ public class DoctorSearchActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        doctorList = new ArrayList<>();
-        adapter = new DoctorAdapter(DoctorSearchActivity.this, doctorList);
+        userList = new ArrayList<>();
+        adapter = new UserAdapter(DoctorSearchActivity.this, userList);
         recyclerView.setAdapter(adapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Users").child("Doctor");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Users");
+
+        //Query query = databaseReference.orderByChild("userType").equalTo("doctor");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                doctorList.clear();
+                userList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Doctor doctor = dataSnapshot.getValue(Doctor.class);
-                    doctorList.add(doctor);
+                   // Doctor doctor = dataSnapshot.getValue(Doctor.class);
+                    // Get the data as a HashMap
+                    HashMap<String, Object> data = (HashMap<String, Object>) dataSnapshot.getValue();
+
+                    // Extract the values from the HashMap
+                    String name = (String) data.get("name");
+                    String email = (String) data.get("email");
+                    String phoneNumber = (String) data.get("phoneNumber");
+                    String specialization = (String) data.get("specialization");
+                    String userId = (String) data.get("userId");
+                    String userType = (String) data.get("usertype");
+
+                    // Create a Doctor object and add it to the list
+                    User user = new User(name, email, phoneNumber, specialization, userId, userType);
+
+                    userList.add(user);
                 }
                 adapter.notifyDataSetChanged();
             }

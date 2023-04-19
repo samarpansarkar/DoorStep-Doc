@@ -1,6 +1,7 @@
 package com.example.myapplicationfirebase;
 
 import android.content.Context;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,11 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
-public class messagesAdaptor extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class messagesAdaptor extends RecyclerView.Adapter {
 
     Context context;
     ArrayList<Messages> messagesArrayList;
@@ -56,14 +58,14 @@ public class messagesAdaptor extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     @Override
     public int getItemCount() {
+
         return messagesArrayList.size();
     }
 
     @Override
     public int getItemViewType(int position) {
         Messages messages = messagesArrayList.get(position);
-        String currentUserName = messages.getSenderName();
-        if (messages.getSenderName().equals(currentUserName)) {
+        if (FirebaseAuth.getInstance().getCurrentUser().getUid().equals(messages.getSenderId())) {
             return ITEM_SEND;
         } else {
             return ITEM_RECIVE;

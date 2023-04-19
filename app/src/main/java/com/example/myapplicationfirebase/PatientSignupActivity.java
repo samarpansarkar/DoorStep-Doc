@@ -100,9 +100,11 @@ public class PatientSignupActivity extends AppCompatActivity {
                     hashMap.put("Email", email);
                     hashMap.put("Password", password);
                     hashMap.put("phonenumber", PhoneNumber);
+                    hashMap.put("specialization", "null");
+                    hashMap.put("userType", "patient");
 
                     // Save to our firebase database
-                    databaseReference.child("Users").child("Patient").child(userId).setValue(hashMap); // Use user ID as child node
+                    databaseReference.child("Users").child(userId).setValue(hashMap); // Use user ID as child node
                     Intent intent = new Intent(PatientSignupActivity.this, PatientMainActivity.class);
                     startActivity(intent);
                     finish();

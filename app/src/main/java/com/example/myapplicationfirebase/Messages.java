@@ -22,12 +22,12 @@ public class Messages {
         this.message = message;
     }
 
-    public String getSenderName() {
+    public String getSenderId() {
         return senderId;
     }
 
-    public void setSenderName(String senderName) {
-        this.senderId = senderName;
+    public void setSenderId(String senderId) {
+        this.senderId = senderId;
     }
 
     public long getTimeStamp() {

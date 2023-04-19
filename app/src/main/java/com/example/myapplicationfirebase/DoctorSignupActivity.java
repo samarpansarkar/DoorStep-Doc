@@ -98,9 +98,10 @@ public class DoctorSignupActivity extends AppCompatActivity {
                     hashMap.put("Password", password);
                     hashMap.put("phonenumber", phone);
                     hashMap.put("specialization", specialization);
+                    hashMap.put("userType", "doctor");
 
                     // Save to our firebase database
-                    databaseReference.child("Users").child("Doctor").child(userId).setValue(hashMap); // Store the user data with user ID as key
+                    databaseReference.child("Users").child(userId).setValue(hashMap); // Store the user data with user ID as key
 
                     startActivity(new Intent(DoctorSignupActivity.this, PatientMainActivity.class));
                     finish();

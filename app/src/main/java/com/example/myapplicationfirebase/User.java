@@ -1,18 +1,21 @@
 package com.example.myapplicationfirebase;
 
-public class Doctor {
+public class User {
     private String name;
+    private String email;
     private String phoneNumber;
     private String specialization;
     private String userId;
+    private String usertype;
+    public User() {}
 
-    public Doctor() {}
-
-    public Doctor(String name, String phoneNumber, String specialization, String userId) {
+    public User(String name, String email, String phoneNumber, String specialization, String userId, String usertype) {
         this.name = name;
+        this.email = email;
         this.phoneNumber = phoneNumber;
         this.specialization = specialization;
         this.userId = userId;
+        this.usertype = usertype;
     }
 
     public String getName() {
@@ -45,5 +48,21 @@ public class Doctor {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getUsertype() {
+        return usertype;
+    }
+
+    public void setUsertype(String usertype) {
+        this.usertype = usertype;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
