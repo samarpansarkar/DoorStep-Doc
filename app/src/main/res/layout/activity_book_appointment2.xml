@@ -2,15 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:gravity="center"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back1"
-    tools:context=".DoctorSignupActivity">
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".BookAppointmentActivity2">
 
     <LinearLayout
+        android:id="@+id/book_ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -20,14 +20,14 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DOCTOR SIGNUP"
+            android:text="APPOINTMENT BOOK"
             android:textSize="36sp"
             android:textAlignment="center"
             android:textStyle="bold"
             android:textColor="@color/white"/>
 
         <EditText
-            android:id="@+id/doc_register_name"
+            android:id="@+id/patient_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -36,27 +36,14 @@
             android:drawablePadding="8dp"
             android:background="@drawable/white_backgroud"
             android:drawableLeft="@drawable/baseline_person_24"
-            android:hint="Name"
+            android:hint="Patient Name"
             android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/doc_register_specialization"
+            android:id="@+id/patient_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:padding="10dp"
-            android:drawablePadding="8dp"
-            android:background="@drawable/white_backgroud"
-            android:drawableLeft="@drawable/baseline_person_24"
-            android:hint="Specialization"
-            android:minHeight="48dp" />
-
-        <EditText
-            android:id="@+id/doc_register_Phone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Phone Number"
+            android:hint="Patient Phone Number"
             android:layout_marginTop="10dp"
             android:ems="10"
             android:minHeight="48dp"
@@ -67,7 +54,7 @@
             android:inputType="phone" />
 
         <EditText
-            android:id="@+id/doc_register_email"
+            android:id="@+id/patient_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -80,7 +67,7 @@
             android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/doc_register_password"
+            android:id="@+id/patient_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -89,43 +76,80 @@
             android:drawablePadding="8dp"
             android:background="@drawable/white_backgroud"
             android:drawableLeft="@drawable/baseline_lock_24"
-            android:hint="Password"
-            android:minHeight="48dp" />
-        <EditText
-            android:id="@+id/doc_register_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:padding="10dp"
-            android:drawablePadding="8dp"
-            android:background="@drawable/white_backgroud"
-            android:drawableLeft="@drawable/baseline_home_24"
-            android:hint="Address"
+            android:hint="Patient Address"
             android:minHeight="48dp" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SELECT DATE"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/date_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:text="DATE"
+                style="?android:spinnerStyle"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SELECT TIME"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="20dp"/>
+
+            <Button
+                android:id="@+id/time_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:text="TIME"
+                style="?android:spinnerStyle"/>
+
+        </LinearLayout>
+
         <Button
-            android:id="@+id/doc_register_button"
+            android:id="@+id/book_appointment_button"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:hint="SignUp"
+            android:hint="REGISTER"
             android:textStyle="bold"
             android:textSize="18sp"
             android:textColorHint="@color/white"
             android:background="@drawable/color_background"
             android:layout_marginTop="10dp"/>
 
-        <TextView
-            android:id="@+id/doc_login_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="@string/already_have_an_account_login"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:textStyle="bold"
-            android:textColor="@color/white"/>
 
     </LinearLayout>
+    <Button
+        android:layout_below="@id/book_ll"
+        android:id="@+id/book_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:hint="back"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColorHint="@color/white"
+        android:background="@drawable/color_background"
+        android:layout_marginTop="10dp"/>
 
 </LinearLayout>

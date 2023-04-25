@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:title="Delete"
+        android:icon="@drawable/baseline_delete_24"
+        android:id="@+id/delete"
+        app:showAsAction="ifRoom"/>
+    <item
+        android:title="LogOut"
+        android:icon="@drawable/baseline_logout_24"
+        android:id="@+id/logOut"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:title="Setting"
+        android:id="@+id/setting"
+        app:showAsAction="never"/>
+
+</menu>

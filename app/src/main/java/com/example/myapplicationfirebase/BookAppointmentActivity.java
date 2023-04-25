@@ -1,15 +1,15 @@
 package com.example.myapplicationfirebase;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,24 +21,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class DoctorSearchActivity extends AppCompatActivity {
+public class BookAppointmentActivity extends AppCompatActivity {
+
     private RecyclerView recyclerView;
-    private UserAdapter adapter;
-    private List<User> userList;
+    private AppointUserAdaptor appointUserAdaptor;
+    private List<AppointUser> appointUserList;
     private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_doctor_search);
+        setContentView(R.layout.activity_book_appointment);
 
-        recyclerView = findViewById(R.id.DrrecyclerView);
+        recyclerView = findViewById(R.id.AppointRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        userList = new ArrayList<>();
-        adapter = new UserAdapter(DoctorSearchActivity.this, userList);
-        recyclerView.setAdapter(adapter);
+        appointUserList = new ArrayList<AppointUser>();
+        appointUserAdaptor = new AppointUserAdaptor(BookAppointmentActivity.this, appointUserList);
+        recyclerView.setAdapter(appointUserAdaptor);
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
 
@@ -46,9 +47,9 @@ public class DoctorSearchActivity extends AppCompatActivity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                userList.clear();
+                appointUserList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                   // Doctor doctor = dataSnapshot.getValue(Doctor.class);
+                    // Doctor doctor = dataSnapshot.getValue(Doctor.class);
                     // Get the data as a HashMap
                     HashMap<String, Object> data = (HashMap<String, Object>) dataSnapshot.getValue();
 
@@ -59,25 +60,25 @@ public class DoctorSearchActivity extends AppCompatActivity {
                     String specialization = (String) data.get("specialization");
                     String userId = (String) data.get("userId");
                     String userType = (String) data.get("usertype");
+                    String address = (String) data.get("Address");
 
                     // Create a Doctor object and add it to the list
-                    User user = new User(name, email, phoneNumber, specialization, userId, userType);
+                    AppointUser appointUser = new AppointUser(name, email, phoneNumber, specialization, userId, userType,address);
 
-                    userList.add(user);
+                    appointUserList.add(appointUser);
                 }
-                adapter.notifyDataSetChanged();
+                appointUserAdaptor.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
                 // Handle database error
-                Toast.makeText(DoctorSearchActivity.this, "database error.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(BookAppointmentActivity.this, "database error.", Toast.LENGTH_SHORT).show();
             }
         });
-
         //searchbar..
-        EditText searchEditText = findViewById(R.id.searchEditText);
+        EditText searchEditText = findViewById(R.id.searchEditTextAppoint);
         searchEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -97,13 +98,10 @@ public class DoctorSearchActivity extends AppCompatActivity {
         });
 
     }
-
-    //searchbar..
-// Search bar method
     private void searchUsers(String searchQuery) {
         // Clear the current list of users
-        userList.clear();
-                // Perform the search on the Firebase database
+        appointUserList.clear();
+        // Perform the search on the Firebase database
         databaseReference.orderByChild("specialization")
                 .startAt(searchQuery)
                 .endAt(searchQuery + "\uf8ff")
@@ -120,22 +118,21 @@ public class DoctorSearchActivity extends AppCompatActivity {
                             String phoneNumber = (String) data.get("phonenumber");
                             String specialization = (String) data.get("specialization");
                             String userId = (String) data.get("userId");
-                            String userType = (String) data.get("usertype");
+                            String userType = (String) data.get("userType");
+                            String address = (String) data.get("Address") ;
 
                             // Create a User object and add it to the list
-                            User user = new User(name, email, phoneNumber, specialization, userId, userType);
-                            userList.add(user);
+                            AppointUser appointUser = new AppointUser(name, email, phoneNumber, specialization, userId, userType,address);
+                            appointUserList.add(appointUser);
                         }
-                        adapter.notifyDataSetChanged();
+                        appointUserAdaptor.notifyDataSetChanged();
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         // Handle database error
-                        Toast.makeText(DoctorSearchActivity.this, "database error.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(BookAppointmentActivity.this, "database error.", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
-
 }
-

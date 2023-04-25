@@ -23,7 +23,7 @@ import java.util.HashMap;
 
 public class DoctorSignupActivity extends AppCompatActivity {
 
-    private EditText doc_register_name,doc_register_Phone,doc_register_email,doc_register_password,doc_register_specialization;
+    private EditText doc_register_name,doc_register_Phone,doc_register_email,doc_register_password,doc_register_specialization,doc_register_address;
     private Button doc_register_button;
     private TextView doc_login_text;
 
@@ -43,6 +43,7 @@ public class DoctorSignupActivity extends AppCompatActivity {
         doc_register_email = findViewById(R.id.doc_register_email);
         doc_register_password = findViewById(R.id.doc_register_password);
         doc_register_specialization = findViewById(R.id.doc_register_specialization);
+        doc_register_address = findViewById(R.id.doc_register_address);
         doc_register_button = findViewById(R.id.doc_register_button);
         doc_login_text = findViewById(R.id.doc_login_text);
 
@@ -67,22 +68,23 @@ public class DoctorSignupActivity extends AppCompatActivity {
                 String password = doc_register_password.getText().toString();
                 String phone = doc_register_Phone.getText().toString();
                 String specialization = doc_register_specialization.getText().toString();
+                String address = doc_register_address.getText().toString();
 
 
-                if (TextUtils.isEmpty(email)||TextUtils.isEmpty(name)||TextUtils.isEmpty(phone)||TextUtils.isEmpty(specialization))
+                if (TextUtils.isEmpty(email)||TextUtils.isEmpty(name)||TextUtils.isEmpty(phone)||TextUtils.isEmpty(specialization)||TextUtils.isEmpty(address))
                 {
                     Toast.makeText(DoctorSignupActivity.this, "Empty credentials.", Toast.LENGTH_SHORT).show();
                 } else if (password.length() < 6) {
                     Toast.makeText(DoctorSignupActivity.this, "Password too short.", Toast.LENGTH_SHORT).show();
                 }else {
-                    registerUser(email,name,password,phone,specialization);
+                    registerUser(email,name,password,phone,specialization,address);
                 }
             }
         });
 
     }
 
-    private void registerUser(String email, String name, String password, String phone, String specialization) {
+    private void registerUser(String email, String name, String password, String phone, String specialization, String address) {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
@@ -98,6 +100,7 @@ public class DoctorSignupActivity extends AppCompatActivity {
                     hashMap.put("Password", password);
                     hashMap.put("phonenumber", phone);
                     hashMap.put("specialization", specialization);
+                    hashMap.put("Address", address);
                     hashMap.put("userType", "doctor");
 
                     // Save to our firebase database
