@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SearchRecentSuggestionsProvider;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -29,10 +30,17 @@ public class BookAppointmentActivity2 extends AppCompatActivity {
 
         book_appointment_button = findViewById(R.id.book_appointment_button);
         book_back_button = findViewById(R.id.book_back_button);
-        doctor_name = findViewById(R.id.patient_name);
-        doctor_phone = findViewById(R.id.patient_phone);
-        doctor_email = findViewById(R.id.patient_email);
-        doctor_address = findViewById(R.id.patient_address);
+        doctor_name = findViewById(R.id.doctor_name);
+        doctor_phone = findViewById(R.id.doctor_phone);
+        doctor_email = findViewById(R.id.doctor_email);
+        doctor_address = findViewById(R.id.doctor_address);
+
+        book_back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BookAppointmentActivity2.this,BookAppointmentActivity.class));
+            }
+        });
 
         doctor_name.setKeyListener(null);
         doctor_phone.setKeyListener(null);

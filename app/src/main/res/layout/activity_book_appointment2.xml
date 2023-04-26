@@ -27,7 +27,7 @@
             android:textColor="@color/white"/>
 
         <EditText
-            android:id="@+id/patient_name"
+            android:id="@+id/doctor_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -36,14 +36,14 @@
             android:drawablePadding="8dp"
             android:background="@drawable/white_backgroud"
             android:drawableLeft="@drawable/baseline_person_24"
-            android:hint="Patient Name"
+            android:hint="Doctor Name"
             android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/patient_phone"
+            android:id="@+id/doctor_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Patient Phone Number"
+            android:hint="Doctor Phone Number"
             android:layout_marginTop="10dp"
             android:ems="10"
             android:minHeight="48dp"
@@ -54,7 +54,7 @@
             android:inputType="phone" />
 
         <EditText
-            android:id="@+id/patient_email"
+            android:id="@+id/doctor_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -67,7 +67,7 @@
             android:minHeight="48dp" />
 
         <EditText
-            android:id="@+id/patient_address"
+            android:id="@+id/doctor_address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -76,7 +76,7 @@
             android:drawablePadding="8dp"
             android:background="@drawable/white_backgroud"
             android:drawableLeft="@drawable/baseline_lock_24"
-            android:hint="Patient Address"
+            android:hint="Doctor Address"
             android:minHeight="48dp" />
 
         <LinearLayout
