@@ -5,21 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_gravity="center"
     android:background="@drawable/back1"
-    tools:context=".DoctorSearchActivity">
+    tools:context=".PatientAppointHistoryActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Chat with Doctor"
+        android:text="Patient Appointment History"
         android:padding="20dp"
         android:textColor="@color/white"
         android:gravity="center"
         android:textStyle="bold"
         android:textSize="30sp"
         android:layout_marginTop="10sp"
-        android:layout_marginBottom="10sp"/>
+        android:layout_marginBottom="5sp"/>
+
+    <TextView
+        android:id="@+id/user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/searchEditText"
@@ -35,7 +44,7 @@
         />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/DrrecyclerView"
+        android:id="@+id/AppHisrecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</LinearLayout>
+        android:layout_height="wrap_content"/>
+    </LinearLayout>

@@ -45,6 +45,7 @@ public class AppointUserAdaptor extends RecyclerView.Adapter<AppointUserAdaptor.
                 intent.putExtra("number",user.getPhoneNumber());
                 intent.putExtra("email",user.getEmail());
                 intent.putExtra("address",user.getAddress());
+                intent.putExtra("UserType",user.getUsertype());
                 context.startActivity(intent);
             }
         });

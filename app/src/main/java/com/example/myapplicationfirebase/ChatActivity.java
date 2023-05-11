@@ -50,7 +50,7 @@ public class ChatActivity extends AppCompatActivity {
             database = FirebaseDatabase.getInstance();
             firebaseAuth = FirebaseAuth.getInstance();
 
-            // Get Sender and Receiver UIDs
+            // Get Sender and Receiver UIDs from UserAdpter
             receiverUid = getIntent().getStringExtra("userID");
             reciverName = getIntent().getStringExtra("Name");
             senderUid = firebaseAuth.getUid();

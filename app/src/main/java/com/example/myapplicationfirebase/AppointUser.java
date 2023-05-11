@@ -10,7 +10,7 @@ public class AppointUser {
     private String usertype;
     private String address;
 
-    public AppointUser() {
+    public AppointUser(String name, String phoneNumber) {
     }
 
     public AppointUser(String name, String email, String phoneNumber, String specialization, String userId, String usertype,String address) {

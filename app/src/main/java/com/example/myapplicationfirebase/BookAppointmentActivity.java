@@ -2,12 +2,15 @@ package com.example.myapplicationfirebase;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -23,6 +26,7 @@ import java.util.List;
 
 public class BookAppointmentActivity extends AppCompatActivity {
 
+    private Toolbar toolbar;
     private RecyclerView recyclerView;
     private AppointUserAdaptor appointUserAdaptor;
     private List<AppointUser> appointUserList;
@@ -32,6 +36,10 @@ public class BookAppointmentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_appointment);
+
+        //Toolbar
+        toolbar = findViewById(R.id.Toolbar);
+        setSupportActionBar(toolbar);
 
         recyclerView = findViewById(R.id.AppointRecyclerView);
         recyclerView.setHasFixedSize(true);
@@ -134,5 +142,14 @@ public class BookAppointmentActivity extends AppCompatActivity {
                         Toast.makeText(BookAppointmentActivity.this, "database error.", Toast.LENGTH_SHORT).show();
                     }
                 });
+
+    }
+
+    //toolbar Menu
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu,menu);
+        return  true;
     }
 }

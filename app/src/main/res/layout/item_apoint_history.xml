@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/white_backgroud"
+    android:orientation="vertical"
+    android:layout_marginTop="10sp"
+    android:padding="1dp">
+
+    <TextView
+        android:id="@+id/nameHistTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="name"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/item_background"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:id="@+id/numberHistTextView"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="number"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/item_background"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/emailHistTextView"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="email"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/item_background"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/useridHistTextView"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:hint="userID"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:background="@drawable/item_background"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity = "center"
+        android:background="@drawable/color_background"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/dateHistTextView"
+            android:layout_marginLeft="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="date"
+            android:padding="10dp"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/timeHistTextView"
+            android:layout_marginLeft="150dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="time"
+            android:padding="10dp"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

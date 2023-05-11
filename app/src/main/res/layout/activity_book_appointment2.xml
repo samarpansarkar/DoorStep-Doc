@@ -37,6 +37,7 @@
             android:background="@drawable/white_backgroud"
             android:drawableLeft="@drawable/baseline_person_24"
             android:hint="Doctor Name"
+            android:textColorHint="@color/white"
             android:minHeight="48dp" />
 
         <EditText
@@ -44,6 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Doctor Phone Number"
+            android:textColorHint="@color/white"
             android:layout_marginTop="10dp"
             android:ems="10"
             android:minHeight="48dp"
@@ -64,6 +66,7 @@
             android:background="@drawable/white_backgroud"
             android:drawableLeft="@drawable/baseline_email_24"
             android:hint="Email"
+            android:textColorHint="@color/white"
             android:minHeight="48dp" />
 
         <EditText
@@ -77,6 +80,7 @@
             android:background="@drawable/white_backgroud"
             android:drawableLeft="@drawable/baseline_lock_24"
             android:hint="Doctor Address"
+            android:textColorHint="@color/white"
             android:minHeight="48dp" />
 
         <LinearLayout
@@ -93,14 +97,15 @@
                 android:textStyle="bold"
                 android:textSize="20dp"/>
 
-            <Button
-                android:id="@+id/date_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
-                android:text="DATE"
-                style="?android:spinnerStyle"/>
-
+           <EditText
+               android:id="@+id/dateEditText"
+               android:layout_width="150dp"
+               android:layout_height="wrap_content"
+               android:hint="dd/mm/yyyy"
+               android:textColorHint="@color/white"
+               android:padding="7dp"
+               android:background="@drawable/white_backgroud"
+               android:layout_marginLeft="70dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -117,13 +122,15 @@
                 android:textStyle="bold"
                 android:textSize="20dp"/>
 
-            <Button
-                android:id="@+id/time_button"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/timeEditText"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
-                android:text="TIME"
-                style="?android:spinnerStyle"/>
+                android:hint="hh/mm"
+                android:textColorHint="@color/white"
+                android:padding="7dp"
+                android:background="@drawable/white_backgroud"
+                android:layout_marginLeft="100dp"/>
 
         </LinearLayout>
 
@@ -131,7 +138,7 @@
             android:id="@+id/book_appointment_button"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:hint="REGISTER"
+            android:hint="BOOK APPOINTMENT"
             android:textStyle="bold"
             android:textSize="18sp"
             android:textColorHint="@color/white"
