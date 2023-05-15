@@ -307,7 +307,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="DOCTOR"
+                    android:text="PATIENT"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textStyle="bold"/>
@@ -347,13 +347,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/baseline_history_24"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PATIEN"
+                    android:text="DOCTOR"
                     android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
