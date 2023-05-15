@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -100,5 +101,20 @@ public class PatientMainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu,menu);
         return  true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.editProfile) {
+            // Handle the "Edit Profile" menu item click
+            Intent intent = new Intent(this, ProfileActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 
 }

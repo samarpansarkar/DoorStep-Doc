@@ -56,8 +56,15 @@
                 android:textAppearance="?attr/textAppearanceListItem" />
 
             <TextView
+                android:layout_marginLeft="130dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Fees: "
+                android:textStyle="bold"
+                android:textAppearance="?attr/textAppearanceListItem" />
+
+            <TextView
                 android:id="@+id/FeesTextView"
-                android:layout_marginLeft="150dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="300"
