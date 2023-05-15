@@ -20,7 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class PatientMainActivity extends AppCompatActivity {
     private Toolbar toolbar;
     private Button doc_booking_button;
-    private CardView CardAppoitmentBooking,CardFindDoctor,CardExit,CardDocAppointHistory,CardPatientAppointHistory;
+    private CardView CardAppoitmentBooking,CardFindDoctor,CardExit,CardDocAppointHistory,CardPatientAppointHistory,CardHealthDoctor;
     private ImageView logOut;
 
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -38,6 +38,7 @@ public class PatientMainActivity extends AppCompatActivity {
         CardAppoitmentBooking = findViewById(R.id.CardAppoitmentBooking);
         CardDocAppointHistory = findViewById(R.id.CardDocAppointHistory);
         CardPatientAppointHistory = findViewById(R.id.CardPatientAppointHistory);
+        CardHealthDoctor = findViewById(R.id.CardHealthDoctor);
 
 
        //Toolbar
@@ -82,6 +83,14 @@ public class PatientMainActivity extends AppCompatActivity {
                 startActivity((new Intent(PatientMainActivity.this,DocAppointHistoryActivity.class)));
             }
         });
+
+        CardHealthDoctor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PatientMainActivity.this, EBookMainActivity.class));
+            }
+        });
+
     }
 
     //toolbar Menu
