@@ -35,8 +35,8 @@ import java.util.Locale;
 
 public class BookAppointmentActivity2 extends AppCompatActivity {
 
-    private Button book_back_button,book_appointment_button;
-    private EditText doctor_name,doctor_phone,doctor_email,doctor_address,timeEditText,dateEditText;
+    private Button book_back_button, book_appointment_button;
+    private EditText doctor_name, doctor_phone, doctor_email, doctor_address, timeEditText, dateEditText;
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -55,13 +55,13 @@ public class BookAppointmentActivity2 extends AppCompatActivity {
         doctor_phone = findViewById(R.id.doctor_phone);
         doctor_email = findViewById(R.id.doctor_email);
         doctor_address = findViewById(R.id.doctor_address);
-        timeEditText  = findViewById(R.id.timeEditText);
+        timeEditText = findViewById(R.id.timeEditText);
         dateEditText = findViewById(R.id.dateEditText);
 
         book_back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(BookAppointmentActivity2.this,BookAppointmentActivity.class));
+                startActivity(new Intent(BookAppointmentActivity2.this, BookAppointmentActivity.class));
             }
         });
 
@@ -81,7 +81,6 @@ public class BookAppointmentActivity2 extends AppCompatActivity {
         String PatientUserId = firebaseAuth.getCurrentUser().getUid();
         String PatientEmail = currentUser.getEmail();
         DatabaseReference usersRef = FirebaseDatabase.getInstance().getReference("Users").child(PatientUserId);
-
 
 
         doctor_name.setText(name);
@@ -109,7 +108,7 @@ public class BookAppointmentActivity2 extends AppCompatActivity {
                             } else if (TextUtils.isEmpty(Date) || TextUtils.isEmpty(Time)) {
                                 Toast.makeText(BookAppointmentActivity2.this, "Please select a date and time", Toast.LENGTH_SHORT).show();
                             } else {
-                                Appoint appoint = new Appoint(PatientName, PatientNumber, PatientEmail, PatientUserId, Date, Time,UserType);
+                                Appoint appoint = new Appoint(PatientName, PatientNumber, PatientEmail, PatientUserId, Date, Time, UserType);
 
                                 String DocUserId = getIntent().getStringExtra("userID");
 
@@ -135,7 +134,7 @@ public class BookAppointmentActivity2 extends AppCompatActivity {
                                                 String DocUserId = getIntent().getStringExtra("userID");
                                                 String UserType = getIntent().getStringExtra("UserType");
 
-                                                Apoint apoint = new Apoint(name, phone, email, address, DocUserId,Date,Time,UserType);
+                                                Apoint apoint = new Apoint(name, phone, email, address, DocUserId, Date, Time, UserType);
                                                 database.getReference().child("Appointments")
                                                         .child(PatientUserId).child(key).setValue(apoint).addOnCompleteListener(new OnCompleteListener<Void>() {
                                                             @Override
@@ -153,6 +152,7 @@ public class BookAppointmentActivity2 extends AppCompatActivity {
                             }
                         }
                     }
+
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
                         // Handle the error

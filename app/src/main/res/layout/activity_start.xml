@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:orientation="vertical"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="50dp"
         android:padding="10dp"
         android:id="@+id/linear_layout">
 
@@ -47,7 +47,7 @@
             android:layout_width="match_parent"
             android:layout_marginTop="20dp"
             android:layout_height="50dp"
-            android:text="LogIn"
+            android:text="Log In"
             android:textSize="22dp"
             android:layout_marginBottom="18sp"
             android:textAllCaps="false"
@@ -69,11 +69,12 @@
             android:layout_marginTop="18sp"
             android:layout_marginBottom="18sp"
             android:layout_height="50dp"
-            android:text="Patient SignUp"
+            android:text="Patient Sign Up"
             android:textSize="22dp"
             android:background="@drawable/white_backgroud"
             android:textAllCaps="false"
             android:id="@+id/signup"/>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,11 +90,32 @@
             android:layout_marginTop="18sp"
             android:layout_marginBottom="18sp"
             android:layout_height="50dp"
-            android:text="Doctor SignUp"
+            android:text="Doctor Sign Up"
             android:textSize="22dp"
             android:background="@drawable/white_backgroud"
             android:textAllCaps="false"
             android:id="@+id/doc_signup"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="or"
+            android:textColor="@color/white"
+            android:textAlignment="center"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_marginTop="18sp"
+            android:layout_marginBottom="18sp"
+            android:layout_height="50dp"
+            android:text="Medicine Sign Up/Log In"
+            android:textSize="22dp"
+            android:background="@drawable/white_backgroud"
+            android:textAllCaps="false"
+            android:id="@+id/med_signup"/>
 
     </LinearLayout>
 </androidx.appcompat.widget.LinearLayoutCompat>

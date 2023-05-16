@@ -12,6 +12,33 @@
         android:theme="@style/Theme.MyApplicationFirebase"
         tools:targetApi="31">
         <activity
+            android:name=".CardTylenoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CardAmoxicillinActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrderPlacedActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CardParacetamolActivity"
+            android:exported="false" />
+        <activity
+            android:name=".OrderMedicineActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MedUploadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MedLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MedSellerSignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MedicineMainActivity"
+            android:exported="false" />
+        <activity
             android:name=".EditSpecializationActivity"
             android:exported="false" />
         <activity
