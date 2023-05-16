@@ -45,8 +45,8 @@ public class LoginActivity extends AppCompatActivity {
         login_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String txt_email = login_email.getText().toString();
-                String txt_password = login_password.getText().toString();
+                String txt_email = login_email.getText().toString().trim();
+                String txt_password = login_password.getText().toString().trim();
 
                 if (TextUtils.isEmpty(txt_email) || TextUtils.isEmpty(txt_password)){
                     Toast.makeText(LoginActivity.this, "Empty Credentials!", Toast.LENGTH_SHORT).show();

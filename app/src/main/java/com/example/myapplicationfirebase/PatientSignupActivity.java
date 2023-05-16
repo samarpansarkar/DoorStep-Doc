@@ -62,10 +62,10 @@ public class PatientSignupActivity extends AppCompatActivity {
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String txt_email = register_email.getText().toString();
-                String txt_name = register_name.getText().toString();
-                String txt_password = register_password.getText().toString();
-                String txt_phonenumber = register_Phone.getText().toString();
+                String txt_email = register_email.getText().toString().trim();
+                String txt_name = register_name.getText().toString().trim();
+                String txt_password = register_password.getText().toString().trim();
+                String txt_phonenumber = register_Phone.getText().toString().trim();
 
                 if (TextUtils.isEmpty(txt_email)||TextUtils.isEmpty(txt_name)||TextUtils.isEmpty(txt_phonenumber))
                 {

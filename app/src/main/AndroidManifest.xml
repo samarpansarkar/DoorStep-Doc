@@ -12,10 +12,19 @@
         android:theme="@style/Theme.MyApplicationFirebase"
         tools:targetApi="31">
         <activity
-            android:name=".ProfileActivity"
+            android:name=".EditSpecializationActivity"
             android:exported="false" />
         <activity
-            android:name=".EditProfileActivity"
+            android:name=".EditPhonenumberActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditAddressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditNameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
             android:exported="false" />
         <activity
             android:name=".EBookMainActivity"

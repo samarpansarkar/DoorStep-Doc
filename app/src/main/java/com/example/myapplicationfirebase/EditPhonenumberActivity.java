@@ -2,6 +2,7 @@ package com.example.myapplicationfirebase;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,25 +14,24 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class EditProfileActivity extends AppCompatActivity {
+public class EditPhonenumberActivity extends AppCompatActivity {
+    private EditText editTextPhone;
 
-    private EditText editTextName;
     private Button buttonSave;
 
     private FirebaseAuth firebaseAuth;
     private DatabaseReference databaseReference;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit_profile);
+        setContentView(R.layout.activity_edit_phonenumber);
 
         firebaseAuth = FirebaseAuth.getInstance();
         databaseReference = FirebaseDatabase.getInstance().getReference("Users");
 
-        editTextName = findViewById(R.id.editTextName);
-        buttonSave = findViewById(R.id.buttonSave);
+        editTextPhone  = findViewById(R.id.editTextPhone);
+        buttonSave = findViewById(R.id.buttonSavePhone);
 
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,13 +39,12 @@ public class EditProfileActivity extends AppCompatActivity {
                 saveProfile();
             }
         });
+
     }
-
     private void saveProfile() {
-        String name = editTextName.getText().toString().trim();
-
-        if (name.isEmpty()) {
-            Toast.makeText(this, "Please enter a name", Toast.LENGTH_SHORT).show();
+        String phone = editTextPhone.getText().toString().trim();
+       if (phone.isEmpty()) {
+            Toast.makeText(this, "Please enter your number", Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -54,9 +53,11 @@ public class EditProfileActivity extends AppCompatActivity {
             String userId = user.getUid();
             DatabaseReference userRef = databaseReference.child(userId);
 
-            userRef.child("name").setValue(name);
+            userRef.child("phonenumber").setValue(phone);
 
             Toast.makeText(this, "Profile saved", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(EditPhonenumberActivity.this,ProfileActivity.class));
+            finish();
         }
     }
 }

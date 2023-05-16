@@ -63,12 +63,12 @@ public class DoctorSignupActivity extends AppCompatActivity {
         doc_register_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = doc_register_email.getText().toString();
-                String name = doc_register_name.getText().toString();
-                String password = doc_register_password.getText().toString();
-                String phone = doc_register_Phone.getText().toString();
-                String specialization = doc_register_specialization.getText().toString();
-                String address = doc_register_address.getText().toString();
+                String email = doc_register_email.getText().toString().trim();
+                String name = doc_register_name.getText().toString().trim();
+                String password = doc_register_password.getText().toString().trim();
+                String phone = doc_register_Phone.getText().toString().trim();
+                String specialization = doc_register_specialization.getText().toString().trim();
+                String address = doc_register_address.getText().toString().trim();
 
 
                 if (TextUtils.isEmpty(email)||TextUtils.isEmpty(name)||TextUtils.isEmpty(phone)||TextUtils.isEmpty(specialization)||TextUtils.isEmpty(address))

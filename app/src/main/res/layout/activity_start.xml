@@ -22,10 +22,25 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
-            android:text="Welcome"
+            android:text="Hey,"
             android:textColor="@color/white"
-            android:textAlignment="center"
             android:textSize="36sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="Welcome to"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:text="DOORSTEP DOC"
+            android:textColor="@color/deep_lavender"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
         <Button
@@ -44,6 +59,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
             android:text="or"
+            android:textColor="@color/white"
             android:textAlignment="center"
             android:textSize="25sp"
             android:textStyle="bold" />
@@ -63,6 +79,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
             android:text="or"
+            android:textColor="@color/white"
             android:textAlignment="center"
             android:textSize="25sp"
             android:textStyle="bold" />
